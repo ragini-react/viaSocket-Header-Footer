@@ -84,7 +84,7 @@ const UserMenu: FC<UserMenuProps> = ({ items }) => {
     <div className="relative mx-4 lg:mr-0" ref={ref}>
       <button
         type="button"
-        className="flex items-center justify-center text-white px-4 bg-accent !text-xs text-nowrap hover:bg-black !h-[32px] !font-normal rounded-full gap-2"
+        className="flex items-center justify-center text-white px-4 bg-red-800 !text-xs text-nowrap hover:bg-black !h-[32px] !font-normal rounded-full gap-2"
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label="Open account menu"
@@ -231,11 +231,11 @@ export const Header: FC<HeaderProps> = ({
             aria-modal="true"
           >
             <div
-              className="absolute inset-0 bg-black/50"
+              className="absolute inset-0"
               onClick={() => setMenuOpen(false)}
               aria-hidden="true"
             />
-            <div className="absolute right-0 top-0 h-full w-72 bg-[#faf9f6] shadow-xl flex flex-col">
+            <div className="absolute right-0 top-0 h-72 w-72 bg-[#faf9f6] shadow-xl flex flex-col">
               <div className="flex items-center justify-between px-4 h-[48px] border-b border-gray-300">
                 <span className="!text-xs uppercase text-dark">Menu</span>
                 <button
@@ -265,7 +265,7 @@ export const Header: FC<HeaderProps> = ({
                 {!isLoggedIn && onLogin && (
                   <button
                     type="button"
-                    className="flex items-center justify-center text-white px-4 bg-accent !text-xs text-nowrap hover:bg-black !h-[32px] !font-normal rounded-full"
+                    className="flex items-center justify-center text-white px-4 bg-red-800 !text-xs text-nowrap hover:bg-black !h-[32px] !font-normal rounded-full"
                     onClick={() => {
                       onLogin();
                       setMenuOpen(false);

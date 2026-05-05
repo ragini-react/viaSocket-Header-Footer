@@ -77,7 +77,7 @@ const renderLogo = (logo: FooterProps['logo']): ReactNode => {
       // Default rendering matches the original rotated brand mark — text reads
       // top-to-bottom with letters rotated 90deg clockwise.
       <div className="flex h-full w-full items-center justify-center overflow-hidden">
-        <p className="rotate-viasocket font-extrabold text-[6vw] leading-none">
+        <p className="rotate-viasocket font-extrabold leading-none">
           {logo}
         </p>
       </div>

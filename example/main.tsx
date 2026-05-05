@@ -41,7 +41,7 @@ const TopBarActions = () => (
       href="https://cal.id/team/viasocket/sales-team"
       target="_blank"
       rel="nofollow noopener noreferrer"
-      className="!uppercase hidden border-l border-gray-300 lg:flex w-fit px-[18px] !h-[30px] items-center justify-center cursor-pointer hover:text-red-800 !text-xs text-nowrap text-dark"
+      className="!uppercase hidden border-l border-gray-300 lg:flex w-fit px-[19.4px] !h-[30px] items-center justify-center cursor-pointer hover:text-red-800 !text-xs text-nowrap text-dark"
     >
       Contact Sales
     </a>
@@ -49,7 +49,7 @@ const TopBarActions = () => (
       href="https://cal.id/team/viasocket/hire-an-expert"
       target="_blank"
       rel="nofollow noopener noreferrer"
-      className="!uppercase hidden border-l border-gray-300 lg:flex w-fit px-[21.4px] !h-[30px] items-center justify-center cursor-pointer hover:text-red-800 !text-xs text-nowrap text-dark"
+      className="!uppercase hidden border-l border-gray-300 lg:flex w-fit px-[19px] !h-[30px] items-center justify-center cursor-pointer hover:text-red-800 !text-xs text-nowrap text-dark"
     >
       Hire an expert
     </a>
