@@ -1,0 +1,28 @@
+# OS / junk
+.DS_Store
+.gitkeep
+*.log
+
+# env
+.env
+.env.*
+
+# build cache
+.vite
+
+# source (never publish)
+src
+example
+public
+
+# configs
+index.html
+vite.config.ts
+tsconfig.json
+tailwind.config.js
+postcss.config.js
+
+# editor
+.github
+.vscode
+.idea
