@@ -238,7 +238,7 @@ function App() {
   return (
     <div className="flex min-h-screen flex-col bg-gray-50">
       <Header
-        logo="/assests/logo.svg"
+        logo=""
         navLinks={navLinks}
         actions={<TopBarActions />}
         userMenu={userMenu}
