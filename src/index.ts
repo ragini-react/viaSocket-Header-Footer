@@ -1,9 +1,7 @@
-// Compiled Tailwind styles. Side-effect import so consumers can opt in via
-// `import 'viasocket-ui/style.css'` or rely on bundlers that respect sideEffects.
 import "./styles/index.css";
 
-export { Header } from "./components/Header/Header";
-export { Footer } from "./components/Footer/Footer";
+export { default as Header } from "./components/Header/Header";
+export { default as Footer } from "./components/Footer/Footer";
 
 export type {
   HeaderProps,
