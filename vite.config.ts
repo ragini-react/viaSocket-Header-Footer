@@ -18,11 +18,10 @@ export default defineConfig({
 
       name: "viasocket-header-footer",
 
-      // ONLY ONE OUTPUT FILE
       fileName: () => "viasocket-header-footer.js",
 
-      // IMPORTANT
-      formats: ["cjs"],
+      // IMPORTANT FOR NEXT.JS
+      formats: ["es"],
     },
 
     rollupOptions: {
@@ -30,8 +29,6 @@ export default defineConfig({
       external: ["react", "react-dom"],
 
       output: {
-        exports: "named",
-
         globals: {
           react: "React",
           "react-dom": "ReactDOM",

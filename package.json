@@ -1,6 +1,6 @@
 {
   "name": "viasocket-header-footer",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Reusable Header & Footer UI component library for viaSocket products",
   "private": false,
   "type": "module",
