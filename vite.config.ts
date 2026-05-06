@@ -30,7 +30,7 @@ export default defineConfig({
       external: ["react", "react-dom"],
 
       output: {
-        interop: "auto",
+        exports: "named",
 
         globals: {
           react: "React",
@@ -40,5 +40,7 @@ export default defineConfig({
     },
 
     cssCodeSplit: false,
+
+    sourcemap: true,
   },
 });

@@ -1,15 +1,18 @@
 {
   "name": "viasocket-header-footer",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Reusable Header & Footer UI component library for viaSocket products",
   "private": false,
   "type": "module",
+
   "main": "./dist/viasocket-header-footer.cjs",
   "module": "./dist/viasocket-header-footer.js",
   "types": "./dist/index.d.ts",
+
   "files": [
     "dist"
   ],
+
   "exports": {
     ".": {
       "import": "./dist/viasocket-header-footer.js",
@@ -18,23 +21,31 @@
     },
     "./style.css": "./dist/style.css"
   },
+
   "sideEffects": [
     "**/*.css"
   ],
+
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   },
+
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
   },
+
   "devDependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
@@ -43,6 +54,7 @@
     "vite": "^5.4.21",
     "vite-plugin-dts": "^3.9.1"
   },
+
   "keywords": [
     "react",
     "ui",
@@ -52,7 +64,9 @@
     "tailwindcss",
     "viasocket"
   ],
+
   "license": "MIT",
+
   "publishConfig": {
     "access": "public"
   }
