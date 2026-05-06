@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState, type FC } from 'react';
 import { cn } from '../../utils/cn';
 import type { HeaderProps, UserMenuItem } from './Header.types';

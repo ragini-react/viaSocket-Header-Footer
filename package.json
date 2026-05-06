@@ -2,19 +2,13 @@
   "name": "@ragini-react/viasocket-header-footer",
   "version": "1.0.0",
   "description": "Reusable Header & Footer UI component library for viaSocket products",
-  "type": "module",
-  "main": "./dist/viasocket-header-footer.cjs",
-  "module": "./dist/viasocket-header-footer.js",
+  "main": "./dist/viasocket-header-footer.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/viasocket-header-footer.js",
-      "require": "./dist/viasocket-header-footer.cjs"
-    },
+    ".": "./dist/viasocket-header-footer.js",
     "./style.css": "./dist/style.css"
   },
   "sideEffects": [

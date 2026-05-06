@@ -1,26 +1,27 @@
-import type { FC, ReactNode } from 'react';
-import { cn } from '../../utils/cn';
+"use client";
+import type { FC, ReactNode } from "react";
+import { cn } from "../../utils/cn";
 import type {
   FooterBadge,
   FooterLinkGroup,
   FooterProps,
   SocialLink,
-} from './Footer.types';
+} from "./Footer.types";
 
 /* ---------- Built-in social icons (replaces lucide-react + YouTubeIcon) ---------- */
 
 /* Lucide-style outline icons (stroke, not filled) — matches the design. */
 const strokeIconProps = {
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
   strokeWidth: 2,
-  strokeLinecap: 'round' as const,
-  strokeLinejoin: 'round' as const,
-  'aria-hidden': true as const,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true as const,
 };
 
-const SOCIAL_ICONS: Record<NonNullable<SocialLink['type']>, ReactNode> = {
+const SOCIAL_ICONS: Record<NonNullable<SocialLink["type"]>, ReactNode> = {
   instagram: (
     <svg {...strokeIconProps} className="w-5 h-5">
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -65,11 +66,11 @@ const SOCIAL_ICONS: Record<NonNullable<SocialLink['type']>, ReactNode> = {
 
 /* ---------- Helpers ---------- */
 
-const renderLogo = (logo: FooterProps['logo']): ReactNode => {
+const renderLogo = (logo: FooterProps["logo"]): ReactNode => {
   if (logo == null) return null;
-  if (typeof logo === 'string') {
+  if (typeof logo === "string") {
     const isImage = /^(https?:)?\/\/|\.(png|jpe?g|svg|webp|gif)(\?|$)/i.test(
-      logo
+      logo,
     );
     return isImage ? (
       <img src={logo} alt="logo" className="w-full object-contain" />
@@ -77,9 +78,7 @@ const renderLogo = (logo: FooterProps['logo']): ReactNode => {
       // Default rendering matches the original rotated brand mark — text reads
       // top-to-bottom with letters rotated 90deg clockwise.
       <div className="flex h-full w-full items-center justify-center overflow-hidden">
-        <p className="rotate-viasocket font-extrabold leading-none">
-          {logo}
-        </p>
+        <p className="rotate-viasocket font-extrabold leading-none">{logo}</p>
       </div>
     );
   }
@@ -91,7 +90,7 @@ const renderSocialIcon = (s: SocialLink): ReactNode => {
   if (s.type && SOCIAL_ICONS[s.type]) return SOCIAL_ICONS[s.type];
   return (
     <span className="flex h-5 w-5 items-center justify-center text-xs font-bold">
-      {s.label?.[0]?.toUpperCase() ?? '?'}
+      {s.label?.[0]?.toUpperCase() ?? "?"}
     </span>
   );
 };
@@ -103,7 +102,7 @@ const renderBadge = (badge: FooterBadge, idx: number) => (
     alt={badge.alt}
     width={badge.width ?? 100}
     height={badge.height ?? 100}
-    className={cn('object-contain', badge.className)}
+    className={cn("object-contain", badge.className)}
     style={badge.style}
   />
 );
@@ -131,16 +130,14 @@ const GroupList: FC<GroupListProps> = ({ groups }) => (
               <a
                 key={idx}
                 href={item.link}
-                target={item.external !== false ? '_blank' : undefined}
+                target={item.external !== false ? "_blank" : undefined}
                 rel={
-                  item.external !== false
-                    ? 'noopener noreferrer'
-                    : undefined
+                  item.external !== false ? "noopener noreferrer" : undefined
                 }
                 aria-label={item.label}
                 className={cn(
-                  'hover:text-blue-500 transition-colors duration-300',
-                  item.highlight && 'text-blue-500'
+                  "hover:text-blue-500 transition-colors duration-300",
+                  item.highlight && "text-blue-500",
                 )}
               >
                 <span className="text-sm">{item.label}</span>
@@ -149,7 +146,7 @@ const GroupList: FC<GroupListProps> = ({ groups }) => (
             {group.extra}
           </div>
         </div>
-      ) : null
+      ) : null,
     )}
   </>
 );
@@ -164,37 +161,36 @@ export const Footer: FC<FooterProps> = ({
   copyright,
   legalLine,
   bottomLinks = [],
-  theme = 'light',
+  theme = "light",
   className,
 }) => {
   // Replicates the original `borderTheme = isBlack ? 'white' : 'custom-border'`
   // mapping with idiomatic Tailwind border-color utilities (visually identical).
-  const borderTheme =
-    theme === 'dark' ? 'border-white' : 'border-gray-200';
+  const borderTheme = theme === "dark" ? "border-white" : "border-gray-200";
 
   const [col1, col2, col3] = splitInThree(linkGroups);
 
   const defaultCopyright: ReactNode =
-    typeof copyright === 'undefined'
-      ? typeof logo === 'string'
+    typeof copyright === "undefined"
+      ? typeof logo === "string"
         ? `© ${new Date().getFullYear()} ${logo}`
         : `© ${new Date().getFullYear()}`
       : copyright;
 
   const wrapperClass = cn(
-    'viasocket-footer-wrapper bg-white grid lg:grid-rows-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-1 ms:grid-cols-4 grid-cols-1 border',
+    "viasocket-footer-wrapper bg-white grid lg:grid-rows-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-1 ms:grid-cols-4 grid-cols-1 border",
     borderTheme,
-    className
+    className,
   );
 
   return (
-    <div className={theme === 'dark' ? 'dark' : ''}>
+    <div className={theme === "dark" ? "dark" : ""}>
       <footer role="contentinfo" className={wrapperClass}>
         {/* Left column — rotated brand mark */}
         <div
           className={cn(
-            'row-span-1 justify-center col-span-4 lg:col-span-1 order-last lg:order-first md:p-10 p-4 h-full lg:border-r border-r-0 flex flex-col',
-            borderTheme
+            "row-span-1 justify-center col-span-4 lg:col-span-1 order-last lg:order-first md:p-10 p-4 h-full lg:border-r border-r-0 flex flex-col",
+            borderTheme,
           )}
         >
           {renderLogo(logo)}
@@ -205,8 +201,8 @@ export const Footer: FC<FooterProps> = ({
           {/* Sub 1 */}
           <div
             className={cn(
-              'flex flex-col gap-12 md:p-10 p-4 lg:border-b-0 border-b sm:border-r',
-              borderTheme
+              "flex flex-col gap-12 md:p-10 p-4 lg:border-b-0 border-b sm:border-r",
+              borderTheme,
             )}
           >
             <GroupList groups={col1} />
@@ -215,8 +211,8 @@ export const Footer: FC<FooterProps> = ({
           {/* Sub 2 — extra groups, badges, socials */}
           <div
             className={cn(
-              'flex flex-col gap-12 md:p-10 p-4 sm:border-r lg:border-b-0 border-b',
-              borderTheme
+              "flex flex-col gap-12 md:p-10 p-4 sm:border-r lg:border-b-0 border-b",
+              borderTheme,
             )}
           >
             <GroupList groups={col2} />
@@ -251,8 +247,8 @@ export const Footer: FC<FooterProps> = ({
           {/* Sub 3 — extra groups, copyright */}
           <div
             className={cn(
-              'flex flex-col lg:border-b-0 border-b gap-12 md:p-10 p-4',
-              borderTheme
+              "flex flex-col lg:border-b-0 border-b gap-12 md:p-10 p-4",
+              borderTheme,
             )}
           >
             <GroupList groups={col3} />
@@ -265,12 +261,9 @@ export const Footer: FC<FooterProps> = ({
                   const isLast = idx === bottomLinks.length - 1;
                   const isSecondLast = idx === bottomLinks.length - 2;
                   return (
-                    <span
-                      key={idx}
-                      className="flex items-center gap-1"
-                    >
+                    <span key={idx} className="flex items-center gap-1">
                       <a
-                        href={l.link || '#'}
+                        href={l.link || "#"}
                         onClick={l.onClick}
                         className="active-link text-link"
                       >
@@ -299,6 +292,6 @@ export const Footer: FC<FooterProps> = ({
   );
 };
 
-Footer.displayName = 'Footer';
+Footer.displayName = "Footer";
 
 export default Footer;
