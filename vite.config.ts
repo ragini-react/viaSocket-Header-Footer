@@ -18,17 +18,20 @@ export default defineConfig({
 
       name: "viasocket-header-footer",
 
-      fileName: () => "viasocket-header-footer.js",
+      formats: ["es", "cjs"],
 
-      // IMPORTANT FOR NEXT.JS
-      formats: ["es"],
+      fileName: (format) =>
+        format === "es"
+          ? "viasocket-header-footer.js"
+          : "viasocket-header-footer.cjs",
     },
 
     rollupOptions: {
-      // DON'T BUNDLE REACT
       external: ["react", "react-dom"],
 
       output: {
+        interop: "auto",
+
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
@@ -37,9 +40,5 @@ export default defineConfig({
     },
 
     cssCodeSplit: false,
-  },
-
-  optimizeDeps: {
-    exclude: ["react", "react-dom"],
   },
 });

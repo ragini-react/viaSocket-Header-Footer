@@ -1,10 +1,10 @@
 {
   "name": "viasocket-header-footer",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Reusable Header & Footer UI component library for viaSocket products",
   "private": false,
   "type": "module",
-  "main": "./dist/viasocket-header-footer.js",
+  "main": "./dist/viasocket-header-footer.cjs",
   "module": "./dist/viasocket-header-footer.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -13,6 +13,7 @@
   "exports": {
     ".": {
       "import": "./dist/viasocket-header-footer.js",
+      "require": "./dist/viasocket-header-footer.cjs",
       "types": "./dist/index.d.ts"
     },
     "./style.css": "./dist/style.css"
