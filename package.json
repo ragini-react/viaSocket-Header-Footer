@@ -2,13 +2,14 @@
   "name": "@ragini-react/viasocket-header-footer",
   "version": "1.0.0",
   "description": "Reusable Header & Footer UI component library for viaSocket products",
-  "main": "./dist/viasocket-header-footer.js",
+  "type": "module",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
-    ".": "./dist/viasocket-header-footer.js",
+    ".": "./dist/index.js",
     "./style.css": "./dist/style.css"
   },
   "sideEffects": [
@@ -16,14 +17,13 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "build:local": "tsc && vite build",
+    "build": "vite build && tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   },
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
@@ -32,8 +32,6 @@
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.6",
     "typescript": "^5.9.3",
     "vite": "^5.4.21",
