@@ -16,10 +16,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "declaration": true,
-    "declarationDir": "dist"
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src"],
-  "exclude": ["dist", "node_modules", "example"]
+  "exclude": ["dist", "node_modules", "example", "test-package"]
 }

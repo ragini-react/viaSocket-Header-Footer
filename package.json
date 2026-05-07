@@ -1,60 +1,68 @@
 {
   "name": "viasocket-header-footer",
-  "version": "1.0.7",
+  "version": "1.0.10",
   "description": "Reusable Header & Footer UI component library for viaSocket products",
   "private": false,
+  "license": "MIT",
   "type": "module",
-
   "main": "./dist/viasocket-header-footer.cjs",
   "module": "./dist/viasocket-header-footer.js",
   "types": "./dist/index.d.ts",
-
-  "files": [
-    "dist"
-  ],
-
+  "style": "./dist/style.css",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/viasocket-header-footer.js",
       "require": "./dist/viasocket-header-footer.cjs",
-      "types": "./dist/index.d.ts"
+      "default": "./dist/viasocket-header-footer.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./package.json": "./package.json"
   },
-
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "sideEffects": [
+    "*.css",
     "**/*.css"
   ],
-
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc --emitDeclarationOnly",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "npm run clean && tsc -p tsconfig.build.json && vite build",
     "preview": "vite preview",
-    "lint": "tsc --noEmit"
+    "prepublishOnly": "npm run build",
+    "pack:test": "npm pack"
   },
-
   "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
-
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    }
+  },
   "devDependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.6",
     "typescript": "^5.9.3",
     "vite": "^5.4.21",
     "vite-plugin-dts": "^3.9.1"
   },
-
   "keywords": [
     "react",
     "ui",
@@ -64,9 +72,9 @@
     "tailwindcss",
     "viasocket"
   ],
-
-  "license": "MIT",
-
+  "engines": {
+    "node": ">=18"
+  },
   "publishConfig": {
     "access": "public"
   }

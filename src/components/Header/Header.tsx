@@ -1,5 +1,7 @@
 "use client";
-import { useEffect, useRef, useState, type FC } from 'react';
+import * as React from 'react';
+import type { FC } from 'react';
+const { useEffect, useRef, useState } = React;
 import { cn } from '../../utils/cn';
 import type { HeaderProps, UserMenuItem } from './Header.types';
 
