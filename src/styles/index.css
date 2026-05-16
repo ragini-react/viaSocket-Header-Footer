@@ -1,4 +1,7 @@
-@tailwind base;
+/* Tailwind's `base` (preflight) layer is intentionally omitted so that the
+   published `dist/style.css` never resets consumer global styles. Preflight
+   is also disabled in `tailwind.config.js` (`corePlugins.preflight: false`)
+   for belt-and-suspenders safety. Only `components` + `utilities` are shipped. */
 @tailwind components;
 @tailwind utilities;
 

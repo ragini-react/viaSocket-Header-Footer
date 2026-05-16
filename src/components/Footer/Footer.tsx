@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import type { FC, ReactNode } from "react";
 import { cn } from "../../utils/cn";
 import type {
@@ -170,11 +171,21 @@ export const Footer: FC<FooterProps> = ({
 
   const [col1, col2, col3] = splitInThree(linkGroups);
 
+  // Year is computed lazily and re-synced on the client after mount. This
+  // keeps the SSR markup and the first client render byte-identical (avoiding
+  // hydration warnings) even if the server's clock disagrees with the
+  // browser's clock across a year boundary or differing time zone.
+  const [year, setYear] = useState<number>(() => new Date().getUTCFullYear());
+  useEffect(() => {
+    const local = new Date().getFullYear();
+    if (local !== year) setYear(local);
+  }, [year]);
+
   const defaultCopyright: ReactNode =
     typeof copyright === "undefined"
       ? typeof logo === "string"
-        ? `© ${new Date().getFullYear()} ${logo}`
-        : `© ${new Date().getFullYear()}`
+        ? `© ${year} ${logo}`
+        : `© ${year}`
       : copyright;
 
   const wrapperClass = cn(

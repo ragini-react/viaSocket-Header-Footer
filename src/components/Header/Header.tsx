@@ -1,9 +1,13 @@
 "use client";
-import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { FC } from 'react';
-const { useEffect, useRef, useState } = React;
 import { cn } from '../../utils/cn';
 import type { HeaderProps, UserMenuItem } from './Header.types';
+
+/* SSR-safety: any access to `window` / `document` must be guarded. Hooks below
+   only run on the client, but we still feature-detect defensively so this file
+   can be evaluated in non-browser environments (Node SSR, edge runtimes). */
+const isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
 
 /* ---------- Inline icons (replaces lucide-react) ---------- */
 
@@ -66,7 +70,7 @@ const UserMenu: FC<UserMenuProps> = ({ items }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || !isBrowser) return;
     const onDocClick = (e: Event) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
         setOpen(false);
@@ -136,6 +140,23 @@ export const Header: FC<HeaderProps> = ({
   className,
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  // `hasMounted` ensures interactive-only UI (mobile drawer, document listeners)
+  // is rendered identically on server and during the first client paint. This
+  // prevents the React 18+ "hydration mismatch" warnings in Next.js apps.
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // Lock body scroll while the mobile drawer is open. Guarded for SSR.
+  useEffect(() => {
+    if (!isBrowser) return;
+    const original = document.body.style.overflow;
+    if (menuOpen) document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [menuOpen]);
 
   // Resolve user menu fallback (onLogout convenience).
   const resolvedUserMenu: UserMenuItem[] | undefined =
@@ -226,7 +247,7 @@ export const Header: FC<HeaderProps> = ({
         </div>
 
         {/* Mobile drawer (replaces project-specific <Menubar/>) */}
-        {menuOpen && (
+        {hasMounted && menuOpen && (
           <div
             id="viasocket-ui-mobile-panel"
             className="fixed inset-0 z-[110] lg:hidden"

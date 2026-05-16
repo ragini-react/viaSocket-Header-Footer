@@ -6,6 +6,12 @@ export default {
     './example/**/*.{ts,tsx,js,jsx,html}',
     './index.html',
   ],
+  // Disable Tailwind's global preflight so the published CSS never resets the
+  // consumer app's typography (h1/button/img defaults, box-sizing, etc.).
+  // Only the utility classes our components actually use are emitted.
+  corePlugins: {
+    preflight: false,
+  },
   // Prefix is optional – uncomment to avoid collisions when consumed in apps
   // that also use Tailwind with different conventions.
   // prefix: 'vs-',
